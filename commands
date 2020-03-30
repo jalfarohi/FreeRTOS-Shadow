@@ -1,0 +1,18 @@
+
+ls /dev/cu.*
+
+/dev/cu.SLAB_USBtoUART
+
+cmake -DVENDOR=espressif -DBOARD=esp32_wrover_kit -DCOMPILER=xtensa-esp32 -S . -B build
+
+make all -j4
+
+make flash
+
+
+
+python2 /Users/xiaodongzheng/Documents/GitHub/amazon-freertos/vendors/espressif/esp-idf/tools/idf.py monitor -p /dev/cu.SLAB_USBtoUART -B build
+
+
+python2 /Users/xiaodongzheng/Documents/GitHub/amazon-freertos/vendors/espressif/esp-idf/tools/idf.py erase_flash flash monitor -p /dev/cu.SLAB_USBtoUART -B build
+
